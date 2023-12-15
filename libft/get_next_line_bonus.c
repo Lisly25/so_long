@@ -6,11 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:09:34 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/05 12:57:52 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:24:48 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 
 static void	clean_up_leftover(char *leftover)
 {

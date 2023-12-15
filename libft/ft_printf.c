@@ -6,11 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:57:49 by skorbai           #+#    #+#             */
-/*   Updated: 2023/11/24 15:03:47 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:22:29 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 static int	print_arg(va_list args, char type)
 {

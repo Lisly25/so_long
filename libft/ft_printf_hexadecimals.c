@@ -6,11 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:08:47 by skorbai           #+#    #+#             */
-/*   Updated: 2023/11/24 14:22:11 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:22:00 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 static int	get_hex_digits(unsigned int num)
 {

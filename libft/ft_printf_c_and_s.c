@@ -6,11 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:19:06 by skorbai           #+#    #+#             */
-/*   Updated: 2023/11/24 14:07:17 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:21:53 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 int	printf_putchar(char c)
 {

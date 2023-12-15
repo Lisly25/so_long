@@ -6,11 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:11:11 by skorbai           #+#    #+#             */
-/*   Updated: 2023/11/24 14:07:42 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:22:06 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 static	int	get_num_size(int n)
 {

@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:15:19 by skorbai           #+#    #+#             */
-/*   Updated: 2023/11/08 17:06:28 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:24:28 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdint.h>
+# include <stdarg.h>
+# include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 256
+# endif
 
 int		ft_isalpha(int c);
 
@@ -104,5 +115,33 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+int		ft_printf(const char *str, ...);
+
+int		printf_putchar(char c);
+
+int		printf_arg_putstr(char *str);
+
+int		printf_void(uintptr_t adress);
+
+int		printf_putnbr(int num);
+
+int		printf_hex(unsigned int num, int hex_case);
+
+int		printf_putstr_backwards(char *str, int i);
+
+int		printf_uint(unsigned int num);
+
+char	*get_next_line(int fd);
+
+char	*gnl_strdup(const char *s, int bytes, int is_leftover);
+
+char	*newline_strdup(char *str);
+
+char	*ft_strchr(const char *s, int c);
+
+char	*gnl_strjoin(char const *pref, char const *suff, ssize_t bytes);
+
+char	*malloc_fail_cleanup(char **leftover);
 
 #endif
