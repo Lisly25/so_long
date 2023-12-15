@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:10:19 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/15 12:25:02 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/15 13:32:15 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,6 @@ char	*gnl_strjoin(char const *pref, char const *suff, ssize_t bytes)
 		result[i++] = suff[j++];
 	result[i] = '\0';
 	return (result);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (*s == (char) c)
-			return ((char *) s);
-		s++;
-	}
-	if (*s == (char) c && (char) c == '\0')
-		return ((char *) s);
-	return (NULL);
 }
 
 char	*gnl_strdup(const char *s, int bytes, int is_leftover)
