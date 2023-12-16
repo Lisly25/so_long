@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:17:35 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/15 14:21:00 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/16 10:39:50 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ char	**read_map(void)
 		map[i] = get_next_line(fd);
 		i++;
 	}
+	close(fd);
 	return (map);
 }
