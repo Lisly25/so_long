@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:38:43 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/15 17:11:25 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:11:01 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_map(char **map)
 		return (0);
 	if (is_walled(map) == 1)
 	{
-		perror("Map error: map must be surrounded by walls");
+		perror("Error\nMap must be surrounded by walls");
 		return (0);
 	}
 	return (1);

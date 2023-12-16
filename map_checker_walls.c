@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:52:31 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/15 17:20:26 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:12:34 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_rectangle(char **map)
 	length_first = ft_strlen(map[i++]);
 	if (length_first == 0)
 	{
-		perror("Map error: must not contain empty lines");
+		perror("Error\nMust not contain empty lines");
 		return (1);
 	}
 	while (map[i])
@@ -34,7 +34,7 @@ int	is_rectangle(char **map)
 			if (map[i][length_rest - 1] != '\n' \
 			&& length_rest == length_first - 1)
 				return (0);
-			perror("Map error: map must be a rectangle");
+			perror("Error\nMap must be a rectangle");
 			return (1);
 		}
 		i++;
