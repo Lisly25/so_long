@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:16:14 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/16 11:11:59 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:05:52 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	count_chars_line(char *map, char c)
 	return (count);
 }
 
-static int	count_chars(char **map, char c)
+int	count_chars(char **map, char c)
 {
 	int	i;
 	int	count;
