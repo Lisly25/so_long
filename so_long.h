@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/15 17:05:15 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:22:07 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <errno.h>
 
 char	**read_map(void);
+
+int		count_chars(char **map, char c);
 
 int		check_chars(char **map);
 
