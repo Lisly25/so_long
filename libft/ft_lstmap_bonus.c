@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:05:19 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/19 11:39:20 by skorbai          ###   ########.fr       */
+/*   Created: 2023/11/08 17:18:06 by skorbai           #+#    #+#             */
+/*   Updated: 2023/12/19 11:57:58 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*next_node;
-	t_list	*copy_of_lst;
+	t_list	*head;
+	t_list	*new;
+	void	*f_result;
 
-	if (lst == NULL || *lst == NULL || del == NULL)
-		return ;
-	copy_of_lst = *lst;
-	next_node = copy_of_lst->next;
-	while (next_node != NULL)
+	if (lst == NULL || f == NULL || del == NULL)
+		return (NULL);
+	head = NULL;
+	while (lst)
 	{
-		next_node = copy_of_lst->next;
-		ft_lstdelone(copy_of_lst, del);
-		copy_of_lst = next_node;
+		f_result = f(lst->content);
+		new = ft_lstnew(f_result);
+		if (new == NULL)
+		{
+			ft_lstclear(&head, del);
+			del(f_result);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, new);
+		lst = lst->next;
 	}
-	ft_lstdelone(copy_of_lst, del);
-	*lst = NULL;
+	return (head);
 }
