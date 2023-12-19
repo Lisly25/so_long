@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:17:35 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/18 16:25:45 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:04:57 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "so_long.h"
 #include "vector.h"
 
-char	**read_map(void)
+t_vector	*read_map(void)
 {
 	t_vector	*map_vector;
 	char		*map_line;
@@ -33,5 +33,5 @@ char	**read_map(void)
 		i++;
 	}
 	close(fd);
-	return (map_vector->map);
+	return (map_vector);
 }
