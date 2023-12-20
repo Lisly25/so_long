@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 10:37:35 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/20 11:33:53 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/20 13:23:01 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	find_start(t_vector *map, int is_x)
 
 	i = 0;
 	j = 0;
-	while (i < map->used_nodes)
+	while (i < (map->used_nodes - 1))
 	{
-		while (map->map[i][j] != '\n')
+		while (map->map[i][j] != '\0')
 		{
 			if (map->map[i][j] == 'P')
 			{
@@ -39,45 +39,82 @@ static int	find_start(t_vector *map, int is_x)
 	return (-1);
 }
 
-void	check_move(char **map, int x, int y)
+void	check_direction(t_vector *map_vector, int x, int y)
 {
-	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C' || map[y + 1][x] == 'E')
-		map[y + 1][x] = 'X';
-	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C' || map[y - 1][x] == 'E')
-		map[y - 1][x] = 'X';
-	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C' || map[y][x + 1] == 'E')
-		map[y][x + 1] = 'X';
-	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C' || map[y][x - 1] == 'E')
-		map[y][x - 1] = 'X';
-	map[x][y] = '*';
+	char	**map;
+	int		y_max;
+	int		x_max;
+
+	map = map_vector->map;
+	y_max = map_vector->used_nodes;
+	x_max = ft_strlen(map[0]);
+	if (map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'E')
+	{
+		map[y][x] = 'X';
+	}
 	return ;
 }
 
-static void	map_iter(char **map, void (*f)(char **, int, int))
+void	check_move(t_vector *map_vector, int x, int y)
 {
-	int	i;
-	int	j;
+	char	**map;
+	int		y_max;
+	int		x_max;
+
+	map = map_vector->map;
+	y_max = map_vector->used_nodes;
+	x_max = ft_strlen(map[0]);
+	if ((y + 1) < y_max)
+		check_direction(map_vector, x, (y + 1));
+	if ((y - 1) >= 0)
+		check_direction(map_vector, x, (y - 1));
+	if ((x + 1) < x_max)
+		check_direction(map_vector, (x + 1), y);
+	if ((x - 1) >= 0)
+		check_direction(map_vector, (x - 1), y);
+	map[y][x] = '*';
+	return ;
+}
+
+//debug function
+static void	print_map(t_vector *map)
+{
+	size_t i = 0;
+
+	ft_printf("\nDebugging map is:\n");
+	while (i < (map->used_nodes - 1))
+	{
+		ft_printf("%s", map->map[i]);
+		i++;
+	}
+	return ;
+}
+
+static void	map_iter(t_vector *map, void (*f)(t_vector *, int, int))
+{
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (i < (map->used_nodes - 1))
 	{
-		while (map[i][j] != '\0')
+		while (map->map[i][j] != '\0')
 		{
-			if (map[i][j] == 'X')
+			if (map->map[i][j] == 'X')
+			{
+				ft_printf("j is %d\n", j);
+				ft_printf("i is %d\n", i);
 				f(map, j, i);
+				print_map(map);
+			}
 			j++;
 		}
+		j = 0;
 		i++;
 	}
-	//just for testing
-	ft_printf("Map is now\n");
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s", map[i]);
-		i++;
-	}
+	//print_map(map);
+	return ;
 }
 
 int	check_path(t_vector *map)
@@ -87,20 +124,15 @@ int	check_path(t_vector *map)
 
 	start_x = find_start(map, 1);
 	start_y = find_start(map, 0);
-	check_move(map->map, start_x, start_y);
-	//just for testing
-	ft_printf("Map is now\n");
-	int i = 0;
-	while (map->map[i])
-	{
-		ft_printf("%s", map->map[i]);
-		i++;
-	}
-	//end of testing
+	check_move(map, start_x, start_y);
+	print_map(map);
 	while (count_chars(map->map, 'X') != 0)
 	{
-		map_iter(map->map, check_move);
+		ft_printf("X count is: %d\n", count_chars(map->map, 'X'));
+		map_iter(map, check_move);
+		//print_map(map);
 	}
+	ft_printf("Did we reach this?\n");
 	if ((count_chars(map->map, 'C') == 0) && (count_chars(map->map, 'E') == 0))
 		return (0);
 	else
