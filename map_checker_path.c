@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 10:37:35 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/20 13:23:01 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:41:02 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,16 @@ static void	map_iter(t_vector *map, void (*f)(t_vector *, int, int))
 		{
 			if (map->map[i][j] == 'X')
 			{
-				ft_printf("j is %d\n", j);
-				ft_printf("i is %d\n", i);
 				f(map, j, i);
 				print_map(map);
+				if (count_chars(map->map, 'C') == 0 && count_chars(map->map, 'E') == 0)
+					return ;
 			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	//print_map(map);
 	return ;
 }
 
@@ -121,6 +120,8 @@ int	check_path(t_vector *map)
 {
 	int			start_x;
 	int			start_y;
+	int			c_count;
+	int			e_count;
 
 	start_x = find_start(map, 1);
 	start_y = find_start(map, 0);
@@ -130,7 +131,10 @@ int	check_path(t_vector *map)
 	{
 		ft_printf("X count is: %d\n", count_chars(map->map, 'X'));
 		map_iter(map, check_move);
-		//print_map(map);
+		c_count = count_chars(map->map, 'C');
+		e_count = count_chars(map->map, 'E');
+		if (c_count == 0 && e_count == 0)
+			return (0);
 	}
 	ft_printf("Did we reach this?\n");
 	if ((count_chars(map->map, 'C') == 0) && (count_chars(map->map, 'E') == 0))
