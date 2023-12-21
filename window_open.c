@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 14:19:14 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/21 14:42:49 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static t_data	*init_window(t_vector *map)
 	return (ptr_to_data);
 }
 
-void ft_key_hook(void *param)
+void ft_key_hook(mlx_key_data_t key_data, void *param)
 {
 	t_data		*data;
 	mlx_t		*mlx;
@@ -87,13 +87,13 @@ void ft_key_hook(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 50;
+		image->instances[0].y -= 200;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 50;
+		image->instances[0].y += 200;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 50;
+		image->instances[0].x -= 200;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 50;
+		image->instances[0].x += 200;
 }
 
 int32_t	main(void)
@@ -121,11 +121,11 @@ int32_t	main(void)
 	draw_map(map, data);
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
-	mlx_loop_hook(data->window, ft_key_hook, data);
+	mlx_key_hook(data->window, ft_key_hook, data);
 	//mlx_loop_hook(mlx, mlx_resize_hook, NULL);
 	mlx_loop(data->window);
 	mlx_terminate(data->window);
 	return (EXIT_SUCCESS);
 }
 
-//compile with: cc window_open.c mlx/libmlx42.a -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I mlx/MLX42.h
+//compile with: cc window_open.c mlx/libmlx42.a -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I mlx/MLX42.h libft/libft.a map_reader.c vector.c draw_map.c
