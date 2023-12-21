@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 12:43:05 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/21 14:19:14 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,17 @@ static void	load_assets(t_data *data)
 	return ;
 }
 
-static t_data	*init_window(void)
+static t_data	*init_window(t_vector *map)
 {
 	t_data	*ptr_to_data;
+	size_t	map_height;
+	size_t	map_width;
 
-	mlx_set_setting(MLX_MAXIMIZED, true);
+	//mlx_set_setting(MLX_MAXIMIZED, true);
+	map_height = ((map->used_nodes) - 1) * 200;
+	map_width = (ft_strlen(map->map[0]) - 1) * 200;
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
-	ptr_to_data->window = mlx_init(WIDTH, HEIGHT, "Hungry Cat", true);
+	ptr_to_data->window = mlx_init(map_width, map_height, "Hungry Cat", true);
 	if (!ptr_to_data->window)
 		ft_error();
 	load_assets(ptr_to_data);
@@ -94,34 +98,27 @@ void ft_key_hook(void *param)
 
 int32_t	main(void)
 {
-	t_data	*data;
+	t_data		*data;
+	t_vector	*map;
 
-	data = init_window();
+	map = read_map();
+	data = init_window(map);
 	//adding background
 	if (mlx_resize_image(data->background, 200, 200) != true)
-		error();
-	if (mlx_image_to_window(data->window, data->background, 1200, 600) < 0)
 		error();
 	//adding exit
 	if (mlx_resize_image(data->exit, 200, 200) != true)
 		error();
-	if (mlx_image_to_window(data->window, data->exit, 600, 600) < 0)
-        error();
 	//adding tree
 	if (mlx_resize_image(data->tree, 200, 200) != true)
 		error();
-	if (mlx_image_to_window(data->window, data->tree, 1200, 600) < 0)
-		error();
-	//adding bird
+		//adding bird
 	if (mlx_resize_image(data->bird, 200, 200) != true)
-		error();
-	if (mlx_image_to_window(data->window, data->bird, 0, 0) < 0)
 		error();
 	//adding avatar
 	if (mlx_resize_image(data->player, 200, 200) != true)
 		error();
-	if (mlx_image_to_window(data->window, data->player, 0, 0) < 0)
-        error();
+	draw_map(map, data);
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	mlx_loop_hook(data->window, ft_key_hook, data);
