@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 14:42:49 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:21:20 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,18 @@ static void	load_assets(t_data *data)
 	return ;
 }
 
-static t_data	*init_window(t_vector *map)
+static t_data	*init_window(void)
 {
-	t_data	*ptr_to_data;
-	size_t	map_height;
-	size_t	map_width;
+	t_data		*ptr_to_data;
+	size_t		map_height;
+	size_t		map_width;
+	t_vector	*map;
 
 	//mlx_set_setting(MLX_MAXIMIZED, true);
-	map_height = ((map->used_nodes) - 1) * 200;
-	map_width = (ft_strlen(map->map[0]) - 1) * 200;
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
+	ptr_to_data->map = read_map();
+	map_height = ((ptr_to_data->map->used_nodes) - 1) * 200;
+	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * 200;
 	ptr_to_data->window = mlx_init(map_width, map_height, "Hungry Cat", true);
 	if (!ptr_to_data->window)
 		ft_error();
@@ -99,10 +101,8 @@ void ft_key_hook(mlx_key_data_t key_data, void *param)
 int32_t	main(void)
 {
 	t_data		*data;
-	t_vector	*map;
 
-	map = read_map();
-	data = init_window(map);
+	data = init_window();
 	//adding background
 	if (mlx_resize_image(data->background, 200, 200) != true)
 		error();
@@ -118,7 +118,7 @@ int32_t	main(void)
 	//adding avatar
 	if (mlx_resize_image(data->player, 200, 200) != true)
 		error();
-	draw_map(map, data);
+	draw_map(data->map, data);
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	mlx_key_hook(data->window, ft_key_hook, data);

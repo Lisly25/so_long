@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 14:18:41 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:15:29 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data {
 	mlx_image_t	*tree;
 	mlx_image_t	*background;
 	mlx_image_t	*bird;
+	t_vector	*map;
 }	t_data;
 
 t_vector	*read_map(void);
