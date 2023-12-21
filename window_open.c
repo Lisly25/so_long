@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 11:54:56 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/21 12:43:05 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,24 @@ static void	load_assets(t_data *data)
 {
 	mlx_texture_t	*cat_sitting;
 	mlx_texture_t	*house;
+	mlx_texture_t	*tree;
+	mlx_texture_t	*ground;
+	mlx_texture_t	*bird;
 
 	cat_sitting = mlx_load_png("../textures/cat/Cat_sitting.png");
-	if (!cat_sitting)
-		error();
 	house = mlx_load_png("../textures/house/house.png");
-	if (!house)
+	tree = mlx_load_png("../textures/plants/tree.png");
+	ground = mlx_load_png("../textures/plants/backdrop.png");
+	bird = mlx_load_png("../textures/bird/bird.png");
+	if (!cat_sitting || !house || !tree || !ground || !bird)
 		error();
 	data->player = mlx_texture_to_image(data->window, cat_sitting);
-	if (!data->player)
-        error();
 	data->exit = mlx_texture_to_image(data->window, house);
-	if (!data->exit)
+	data->tree = mlx_texture_to_image(data->window, tree);
+	data->background = mlx_texture_to_image(data->window, ground);
+	data->bird = mlx_texture_to_image(data->window, bird);
+	if (!data->player || !data->exit || !data->tree || !data->background \
+	|| !data->bird)
         error();
 	return ;
 }
@@ -77,13 +83,13 @@ void ft_key_hook(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 20;
+		image->instances[0].y -= 50;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 20;
+		image->instances[0].y += 50;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 20;
+		image->instances[0].x -= 50;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 20;
+		image->instances[0].x += 50;
 }
 
 int32_t	main(void)
@@ -91,15 +97,30 @@ int32_t	main(void)
 	t_data	*data;
 
 	data = init_window();
-	if (mlx_resize_image(data->player, 500, 500) != true)
+	//adding background
+	if (mlx_resize_image(data->background, 200, 200) != true)
 		error();
-	ft_printf("Break\n");
-	if (mlx_image_to_window(data->window, data->player, 0, 0) < 0)
-        error();
-	ft_printf("Break2\n");
-	if (mlx_resize_image(data->exit, 500, 500) != true)
+	if (mlx_image_to_window(data->window, data->background, 1200, 600) < 0)
+		error();
+	//adding exit
+	if (mlx_resize_image(data->exit, 200, 200) != true)
 		error();
 	if (mlx_image_to_window(data->window, data->exit, 600, 600) < 0)
+        error();
+	//adding tree
+	if (mlx_resize_image(data->tree, 200, 200) != true)
+		error();
+	if (mlx_image_to_window(data->window, data->tree, 1200, 600) < 0)
+		error();
+	//adding bird
+	if (mlx_resize_image(data->bird, 200, 200) != true)
+		error();
+	if (mlx_image_to_window(data->window, data->bird, 0, 0) < 0)
+		error();
+	//adding avatar
+	if (mlx_resize_image(data->player, 200, 200) != true)
+		error();
+	if (mlx_image_to_window(data->window, data->player, 0, 0) < 0)
         error();
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
