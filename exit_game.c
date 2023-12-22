@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:20:27 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:31:46 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:57:13 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ int	check_for_win(t_data *assets)
 		return (0);
 	else
 		return (1);
+}
+
+void	free_map(t_vector *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->map[i] != NULL)
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map->map);
+	free(map);
 }
 
 void	exit_game(t_data *assets)

@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:35:59 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:43:29 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:59:16 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int32_t	main(void)
 {
 	t_data		*data;
 
+	if (validate_map() == 1)
+		return (1);
 	data = init_window();
 	draw_map(data->map, data);
 	// Register a hook and pass mlx as an optional param.

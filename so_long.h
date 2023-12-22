@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:39:05 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:58:24 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_data {
 	t_vector	*map;
 }	t_data;
 
+int			validate_map(void);
+
 t_vector	*read_map(void);
 
 int			count_chars(char **map, char c);
@@ -40,8 +42,6 @@ int			count_chars(char **map, char c);
 int			check_chars(char **map);
 
 int			check_char_num(char **map);
-
-int			check_map(t_vector *map);
 
 int			is_rectangle(char **map);
 
@@ -58,6 +58,8 @@ void		ft_key_hook(mlx_key_data_t key_data, void *param);
 void		move_check(t_data *assets, int mode);
 
 int			check_for_win(t_data *assets);
+
+void		free_map(t_vector *map);
 
 void		exit_game(t_data *assets);
 
