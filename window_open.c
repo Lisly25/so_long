@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 15:51:33 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 11:04:38 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static t_data	*init_window(void)
 	t_data		*ptr_to_data;
 	size_t		map_height;
 	size_t		map_width;
-	t_vector	*map;
 
 	//mlx_set_setting(MLX_MAXIMIZED, true);
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
@@ -77,15 +76,15 @@ static t_data	*init_window(void)
 	return (ptr_to_data);
 }
 
-void ft_key_hook(mlx_key_data_t key_data, void *param)
+void	ft_key_hook(mlx_key_data_t key_data, void *param)
 {
 	t_data		*data;
 	mlx_t		*mlx;
-	mlx_image_t	*image;
 
 	data = param;
 	mlx = data->window;
-	//image = data->player;
+	if (key_data.key == 256)
+		key_data.key = 256;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
