@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:20:27 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:57:13 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 14:40:56 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	free_map(t_vector *map)
 void	exit_game(t_data *assets)
 {
 	mlx_close_window(assets->window);
+	free_map(assets->map);
 }

@@ -6,13 +6,14 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2023/12/22 12:38:37 by skorbai          ###   ########.fr        #
+#    Updated: 2023/12/22 16:24:03 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C_FLAGS = -Wall -Wextra -Werror
 
 SRCS = check_for_walls.c \
+		display_move_count.c \
 		draw_map.c \
 		exit_game.c \
 		main.c \
@@ -22,7 +23,7 @@ SRCS = check_for_walls.c \
 		map_checker_walls.c \
 		map_reader.c \
 		vector.c \
-		window_open.c
+		window_open.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:42:55 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 15:53:40 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ static void	load_assets(t_data *data)
 	return ;
 }
 
-static void	resize_assets(t_data *assets)
+static void	resize_assets(t_data *assets, int scale)
 {
-	if (mlx_resize_image(assets->background, 200, 200) != true)
+	if (mlx_resize_image(assets->background, scale, scale) != true)
 		error();
-	if (mlx_resize_image(assets->exit, 200, 200) != true)
+	if (mlx_resize_image(assets->exit, scale, scale) != true)
 		error();
-	if (mlx_resize_image(assets->tree, 200, 200) != true)
+	if (mlx_resize_image(assets->tree, scale, scale) != true)
 		error();
-	if (mlx_resize_image(assets->bird, 200, 200) != true)
+	if (mlx_resize_image(assets->bird, scale, scale) != true)
 		error();
-	if (mlx_resize_image(assets->player, 200, 200) != true)
+	if (mlx_resize_image(assets->player, scale, scale) != true)
 		error();
 }
 
@@ -64,16 +64,15 @@ t_data	*init_window(void)
 	size_t		map_height;
 	size_t		map_width;
 
-	//mlx_set_setting(MLX_MAXIMIZED, true);
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
 	ptr_to_data->map = read_map();
-	map_height = ((ptr_to_data->map->used_nodes) - 1) * 200;
-	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * 200;
+	map_height = ((ptr_to_data->map->used_nodes) - 1) * SCALE;
+	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * SCALE;
 	ptr_to_data->window = mlx_init(map_width, map_height, "Hungry Cat", true);
 	if (!ptr_to_data->window)
 		error();
 	load_assets(ptr_to_data);
-	resize_assets(ptr_to_data);
+	resize_assets(ptr_to_data, SCALE);
 	return (ptr_to_data);
 }
 

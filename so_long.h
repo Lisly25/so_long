@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:58:24 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 16:23:37 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # include "mlx/MLX42.h"
 # include "libft/libft.h"
 
-# define WIDTH 600
-# define HEIGHT 600
+# define SCALE 150
 
 typedef struct s_data {
 	mlx_t		*window;
@@ -31,6 +30,7 @@ typedef struct s_data {
 	mlx_image_t	*background;
 	mlx_image_t	*bird;
 	t_vector	*map;
+	mlx_image_t	*text;
 }	t_data;
 
 int			validate_map(void);
@@ -62,5 +62,7 @@ int			check_for_win(t_data *assets);
 void		free_map(t_vector *map);
 
 void		exit_game(t_data *assets);
+
+void		display_moves(t_data *assets, int move_count, char *text);
 
 #endif
