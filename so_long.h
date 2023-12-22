@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:32:21 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:39:05 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int			is_walled(char **map);
 
 int			check_path(t_vector *map);
 
+t_data		*init_window(void);
+
 void		draw_map(t_vector *map, t_data *assets);
+
+void		ft_key_hook(mlx_key_data_t key_data, void *param);
 
 void		move_check(t_data *assets, int mode);
 

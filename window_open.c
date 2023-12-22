@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:32:57 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:42:55 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ static void error(void)
 	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
-
-// Print the window width and height.
-//static void ft_hook(void* param)
-//{
-//	const mlx_t* mlx = param;
-//
-//	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
-//}
 
 static void	load_assets(t_data *data)
 {
@@ -48,11 +40,25 @@ static void	load_assets(t_data *data)
 	data->bird = mlx_texture_to_image(data->window, bird);
 	if (!data->player || !data->exit || !data->tree || !data->background \
 	|| !data->bird)
-        error();
+		error();
 	return ;
 }
 
-static t_data	*init_window(void)
+static void	resize_assets(t_data *assets)
+{
+	if (mlx_resize_image(assets->background, 200, 200) != true)
+		error();
+	if (mlx_resize_image(assets->exit, 200, 200) != true)
+		error();
+	if (mlx_resize_image(assets->tree, 200, 200) != true)
+		error();
+	if (mlx_resize_image(assets->bird, 200, 200) != true)
+		error();
+	if (mlx_resize_image(assets->player, 200, 200) != true)
+		error();
+}
+
+t_data	*init_window(void)
 {
 	t_data		*ptr_to_data;
 	size_t		map_height;
@@ -67,6 +73,7 @@ static t_data	*init_window(void)
 	if (!ptr_to_data->window)
 		error();
 	load_assets(ptr_to_data);
+	resize_assets(ptr_to_data);
 	return (ptr_to_data);
 }
 
@@ -90,35 +97,3 @@ void	ft_key_hook(mlx_key_data_t key_data, void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 		move_check(data, 4);
 }
-
-int32_t	main(void)
-{
-	t_data		*data;
-
-	data = init_window();
-	//adding background
-	if (mlx_resize_image(data->background, 200, 200) != true)
-		error();
-	//adding exit
-	if (mlx_resize_image(data->exit, 200, 200) != true)
-		error();
-	//adding tree
-	if (mlx_resize_image(data->tree, 200, 200) != true)
-		error();
-		//adding bird
-	if (mlx_resize_image(data->bird, 200, 200) != true)
-		error();
-	//adding avatar
-	if (mlx_resize_image(data->player, 200, 200) != true)
-		error();
-	draw_map(data->map, data);
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
-	mlx_key_hook(data->window, ft_key_hook, data);
-	//mlx_loop_hook(mlx, mlx_resize_hook, NULL);
-	mlx_loop(data->window);
-	mlx_terminate(data->window);
-	return (EXIT_SUCCESS);
-}
-
-//compile with: cc window_open.c mlx/libmlx42.a -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I mlx/MLX42.h libft/libft.a map_reader.c vector.c draw_map.c
