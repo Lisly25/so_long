@@ -6,17 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 11:04:38 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:32:57 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void ft_error(void)
-{
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
 
 static void error(void)
 {
@@ -71,7 +65,7 @@ static t_data	*init_window(void)
 	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * 200;
 	ptr_to_data->window = mlx_init(map_width, map_height, "Hungry Cat", true);
 	if (!ptr_to_data->window)
-		ft_error();
+		error();
 	load_assets(ptr_to_data);
 	return (ptr_to_data);
 }
@@ -86,7 +80,7 @@ void	ft_key_hook(mlx_key_data_t key_data, void *param)
 	if (key_data.key == 256)
 		key_data.key = 256;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
+		exit_game(data);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		move_check(data, 1);
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))

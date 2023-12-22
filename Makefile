@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2023/12/22 11:12:10 by skorbai          ###   ########.fr        #
+#    Updated: 2023/12/22 12:26:29 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ C_FLAGS = -Wall -Wextra -Werror
 
 SRCS = check_for_walls.c \
 		draw_map.c \
+		exit_game.c \
 		map_checker_all.c \
 		map_checker_path.c \
 		map_checker_symbols.c \

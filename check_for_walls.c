@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:52:56 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 12:17:16 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:31:32 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ void	move_check(t_data *assets, int mode)
 	}
 	if (c == 'E')
 	{
-		move_player(assets, mode);
-		//exit game here
+		if (check_for_win(assets) == 1)
+			move_player(assets, mode);
+		else
+			exit_game(assets);
 	}
 	return ;
 }

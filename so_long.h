@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 15:45:38 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:32:21 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ int			check_path(t_vector *map);
 void		draw_map(t_vector *map, t_data *assets);
 
 void		move_check(t_data *assets, int mode);
+
+int			check_for_win(t_data *assets);
+
+void		exit_game(t_data *assets);
 
 #endif
