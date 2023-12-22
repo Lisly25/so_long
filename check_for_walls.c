@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:52:56 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/21 15:58:18 by skorbai          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:17:16 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,45 @@ static void	move_player(t_data *assets, int mode)
 	return ;
 }
 
+static int	get_instance(t_data *assets, int x, int y, char c)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	j = 0;
+	count = -1;
+	while (assets->map->map[i] != NULL)
+	{
+		while (assets->map->map[i][j] != '\0')
+		{
+			if (assets->map->map[i][j] == c)
+				count++;
+			if (i == y && j == x)
+				return (count);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (-2);
+}
+
+static void	get_collectible(t_data *assets)
+{
+	int				i;
+	int				x;
+	int				y;
+	mlx_instance_t	*instance;
+
+	x = (assets->player->instances[0].x) / 200;
+	y = (assets->player->instances[0].y) / 200;
+	i = get_instance(assets, x, y, 'C');
+	instance = &assets->bird->instances[i];
+	mlx_set_instance_depth(instance, -1);
+}
+
 void	move_check(t_data *assets, int mode)
 {
 	char	c;
@@ -59,7 +98,8 @@ void	move_check(t_data *assets, int mode)
 	if (c == 'C')
 	{
 		move_player(assets, mode);
-		//remove the bird
+		get_collectible(assets);
+		return ;
 	}
 	if (c == 'E')
 	{
