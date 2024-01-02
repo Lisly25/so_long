@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 09:26:59 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 09:47:37 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # include "libft/libft.h"
 
 # define SCALE 150
+# define PLAYER_PATH "./textures/Cat_sitting.png"
+# define COLLECTIBLE_PATH "./textures/bird.png"
+# define TREE_PATH "./textures/tree.png"
+# define GROUND_PATH "./textures/backdrop.png"
+# define EXIT_PATH "./textures/house.png"
 
 typedef struct s_data {
 	mlx_t		*window;
