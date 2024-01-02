@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 16:23:37 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 09:26:59 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include "vector.h"
-# include "mlx/MLX42.h"
+# include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 
 # define SCALE 150

@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2024/01/02 09:13:33 by skorbai          ###   ########.fr        #
+#    Updated: 2024/01/02 09:34:08 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ SRCS = check_for_walls.c \
 
 OBJS = $(SRCS:.c=.o)
 
-MLX = mlx/libmlx42.a
+MLX = MLX42/build/libmlx42.a
 
-MLX_HEADER = mlx/MLX42.h
+MLX_HEADER = MLX42/include/MLX42/MLX42.h
 
 LIBFT = libft/libft.a
 
@@ -39,6 +39,9 @@ all: $(NAME)
 
 $(LIBFT) :
 	make -C ./libft
+
+$(MLX) :
+	cd MLX42 &&	cmake -B build && cmake --build build -j4
 
 $(NAME) : $(OBJS) $(MLX) $(LIBFT)
 	cc $(OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I $(MLX_HEADER) -o $(NAME)
