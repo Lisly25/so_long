@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 09:44:16 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 10:53:54 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	load_assets(t_data *data)
 	if (!data->player || !data->exit || !data->tree || !data->background \
 	|| !data->bird)
 		error();
+	delete_textures(cat_sitting, house, tree, ground, bird);
 	return ;
 }
 

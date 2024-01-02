@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:20:27 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 14:40:56 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 10:52:30 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,22 @@ void	exit_game(t_data *assets)
 {
 	mlx_close_window(assets->window);
 	free_map(assets->map);
+}
+
+void	delete_textures(mlx_texture_t *texture, ...)
+{
+	va_list			textures;
+	int				i;
+	mlx_texture_t	*arg;
+
+	va_start(textures, texture);
+	i = 0;
+	while (i < 4)
+	{
+		arg = va_arg(textures, mlx_texture_t *);
+		mlx_delete_texture(arg);
+		i++;
+	}
+	mlx_delete_texture(texture);
+	va_end(textures);
 }
