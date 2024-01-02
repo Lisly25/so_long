@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:38:15 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:24:25 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 16:23:11 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	draw_map(t_vector *map, t_data *assets)
 	draw_asset(map, assets->exit, assets->window, 'E');
 	draw_asset(map, assets->bird, assets->window, 'C');
 	draw_asset(map, assets->player, assets->window, 'P');
-	ft_printf("Number of moves: 0\n");
+	display_initial_moves(assets);
 	return ;
 }

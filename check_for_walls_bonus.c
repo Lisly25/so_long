@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_walls.c                                  :+:      :+:    :+:   */
+/*   check_for_walls_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:52:56 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:18:18 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 16:14:56 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "so_long_bonus.h"
 
 static char	grid_check(t_data *data, int mode)
 {
@@ -53,7 +54,7 @@ static void	move_player(t_data *assets, int mode)
 		assets->player->instances[0].x += SCALE;
 	}
 	i++;
-	display_moves(i, "Number of moves: ");
+	display_moves_bonus(assets, i, "Number of moves: ");
 	return ;
 }
 

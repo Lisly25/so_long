@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_move_count.c                               :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:52:55 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:27:17 by skorbai          ###   ########.fr       */
+/*   Created: 2024/01/02 16:12:03 by skorbai           #+#    #+#             */
+/*   Updated: 2024/01/02 16:22:47 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-void	display_moves(int move_count, char *text)
-{
-	ft_printf("%s%d\n", text, move_count);
-	return ;
-}
+# include "so_long.h"
+
+void	display_moves_bonus(t_data *assets, int move_count, char *text);
+
+void	display_initial_moves_bonus(t_data *assets);
+
+#endif

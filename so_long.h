@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 15:48:33 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 16:18:10 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		free_map(t_vector *map);
 
 void		exit_game(t_data *assets);
 
-void		display_moves(t_data *assets, int move_count, char *text);
+void		display_moves(int move_count, char *text);
 
 void		delete_textures(mlx_texture_t *texture, ...);
 
