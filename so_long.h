@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 12:08:04 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:48:33 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 
-# define MAP_PATH "./map/map.ber"
 # define SCALE 150
 # define PLAYER_PATH "./textures/Cat_sitting.png"
 # define COLLECTIBLE_PATH "./textures/bird.png"
@@ -40,9 +39,9 @@ typedef struct s_data {
 	mlx_image_t	*text;
 }	t_data;
 
-int			validate_map(void);
+int			validate_map(char *map_path);
 
-t_vector	*read_map(void);
+t_vector	*read_map(char *map_path);
 
 int			count_chars(char **map, char c);
 
@@ -56,7 +55,7 @@ int			is_walled(char **map);
 
 int			check_path(t_vector *map);
 
-t_data		*init_window(void);
+t_data		*init_window(char *map_path);
 
 void		draw_map(t_vector *map, t_data *assets);
 

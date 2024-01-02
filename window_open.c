@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 15:38:44 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:44:35 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	resize_assets(t_data *assets, int scale)
 		ft_mlx_error();
 }
 
-t_data	*init_window(void)
+t_data	*init_window(char *map_path)
 {
 	t_data		*ptr_to_data;
 	size_t		map_height;
@@ -62,7 +62,7 @@ t_data	*init_window(void)
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
 	if (ptr_to_data == NULL)
 		ft_error("Error\nMalloc fail on creating t_data struct");
-	ptr_to_data->map = read_map();
+	ptr_to_data->map = read_map(map_path);
 	map_height = ((ptr_to_data->map->used_nodes) - 1) * SCALE;
 	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * SCALE;
 	ptr_to_data->window = mlx_init(map_width, map_height, "so_long", true);
