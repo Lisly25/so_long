@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2023/12/22 16:24:03 by skorbai          ###   ########.fr        #
+#    Updated: 2024/01/02 09:13:33 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,9 @@ NAME = CatGame
 
 all: $(NAME)
 
+$(LIBFT) :
+	make -C ./libft
+
 $(NAME) : $(OBJS) $(MLX) $(LIBFT)
 	cc $(OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I $(MLX_HEADER) -o $(NAME)
 
@@ -45,9 +48,11 @@ $(NAME) : $(OBJS) $(MLX) $(LIBFT)
 
 clean:
 	rm -f $(OBJS)
+	make clean -C ./libft
 
 fclean: clean 
 	rm -f $(NAME)
+	make fclean -C ./libft
 
 re: fclean all
 
