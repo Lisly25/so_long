@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 13:32:12 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:38:44 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_data	*init_window(void)
 	size_t		map_width;
 
 	ptr_to_data = (t_data *)malloc(sizeof(t_data));
+	if (ptr_to_data == NULL)
+		ft_error("Error\nMalloc fail on creating t_data struct");
 	ptr_to_data->map = read_map();
 	map_height = ((ptr_to_data->map->used_nodes) - 1) * SCALE;
 	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * SCALE;
