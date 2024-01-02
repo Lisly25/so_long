@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   draw_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:38:15 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:23:11 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 16:47:30 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
 {
@@ -68,6 +69,6 @@ void	draw_map(t_vector *map, t_data *assets)
 	draw_asset(map, assets->exit, assets->window, 'E');
 	draw_asset(map, assets->bird, assets->window, 'C');
 	draw_asset(map, assets->player, assets->window, 'P');
-	display_initial_moves(assets);
+	display_initial_moves_bonus(assets);
 	return ;
 }
