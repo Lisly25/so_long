@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:38:43 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 13:38:13 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:44:07 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static int	check_map(t_vector *map)
 	return (0);
 }
 
-int	validate_map(void)
+int	validate_map(char *map_path)
 {
 	t_vector	*map;
 	int			result;
 
-	map = read_map();
+	map = read_map(map_path);
 	if (map->map[0] == NULL)
 		ft_error("Error\nMap could not be read");
 	result = check_map(map);
