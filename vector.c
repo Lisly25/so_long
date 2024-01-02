@@ -6,18 +6,23 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:23 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/18 16:23:48 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:17:41 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
+#include "so_long.h"
 
 t_vector	*vector_new(size_t size)
 {
 	t_vector	*new_vector;
 
 	new_vector = (t_vector *)malloc(sizeof(t_vector));
+	if (new_vector == NULL)
+		return (NULL);
 	new_vector->map = (char **)malloc(size * sizeof(char *));
+	if (new_vector->map == NULL)
+		return (NULL);
 	new_vector->max_nodes = size;
 	new_vector->used_nodes = 0;
 	return (new_vector);
@@ -30,6 +35,8 @@ char	**vector_array_realloc(char ***old_map, size_t node_max)
 
 	i = 0;
 	new_map = (char **)malloc(sizeof(char *) * node_max * 2);
+	if (new_map == NULL)
+		return (NULL);
 	while (i < node_max)
 	{
 		new_map[i] = (char *)(*old_map)[i];
@@ -55,7 +62,7 @@ int	vector_add_back(t_vector *old, char *new_data)
 	if (old->used_nodes == old->max_nodes)
 	{
 		if (expand_vector(old) == 1)
-			return (1);
+			ft_error("Error\nMap read failure (while expanding vector\n)");
 	}
 	old->map[old->used_nodes] = new_data;
 	old->used_nodes++;

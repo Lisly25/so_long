@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2024/01/02 09:34:08 by skorbai          ###   ########.fr        #
+#    Updated: 2024/01/02 13:31:05 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ C_FLAGS = -Wall -Wextra -Werror
 SRCS = check_for_walls.c \
 		display_move_count.c \
 		draw_map.c \
+		error.c \
 		exit_game.c \
 		main.c \
 		map_checker_all.c \
@@ -23,7 +24,7 @@ SRCS = check_for_walls.c \
 		map_checker_walls.c \
 		map_reader.c \
 		vector.c \
-		window_open.c \
+		window_open.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -33,7 +34,7 @@ MLX_HEADER = MLX42/include/MLX42/MLX42.h
 
 LIBFT = libft/libft.a
 
-NAME = CatGame
+NAME = so_long
 
 all: $(NAME)
 

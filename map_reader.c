@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:17:35 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/19 15:04:57 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:14:08 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ t_vector	*read_map(void)
 
 	i = 0;
 	map_vector = vector_new(2);
-	fd = open("./map/map.ber", O_RDONLY);
+	if (map_vector == NULL)
+		ft_error("Error\nFailed to create 2D vector for map\n");
+	fd = open(MAP_PATH, O_RDONLY);
 	map_line = get_next_line(fd);
+	if (map_line == NULL)
+		ft_error("Error\nFailed to read map file\n");
 	vector_add_back(map_vector, map_line);
 	while (map_vector->map[i] != NULL)
 	{

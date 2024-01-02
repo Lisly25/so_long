@@ -6,18 +6,11 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:38:15 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 16:36:18 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:20:37 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//this is a duplicate for now
-static void error(void)
-{
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
 
 static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
 {
@@ -33,7 +26,7 @@ static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
 		while (map->map[i][j] != '\0' && map->map[i][j] != '\n')
 		{
 			if (mlx_image_to_window(mlx, asset, (j * scale), (i * scale)) < 0)
-				error();
+				ft_mlx_error();
 			j++;
 		}
 		j = 0;
@@ -57,8 +50,8 @@ static void	draw_asset(t_vector *map, mlx_image_t *asset, mlx_t *mlx, char c)
 		{
 			if (map->map[i][j] == c)
 			{
-				if (mlx_image_to_window(mlx, asset, (j * scale), (i * scale)) < 0)
-					error();
+				if (mlx_image_to_window(mlx, asset, j * scale, i * scale) < 0)
+					ft_mlx_error();
 			}
 			j++;
 		}

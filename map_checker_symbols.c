@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:16:14 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 11:41:50 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 13:40:30 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int	check_chars(char **map)
 	{
 		result = check_chars_line(map[i]);
 		if (result == 1)
-		{
-			perror("Error\nInvalid symbol in map");
-			return (1);
-		}
+			ft_error("Error\nInvalid symbol in map");
 		i++;
 	}
 	return (0);
@@ -82,19 +79,10 @@ int	count_chars(char **map, char c)
 int	check_char_num(char **map)
 {
 	if (count_chars(map, 'P') != 1)
-	{
-		perror("Error\nNumber of starting positions must be 1");
-		return (0);
-	}
+		ft_error("Error\nNumber of starting positions must be 1\n");
 	else if (count_chars(map, 'E') != 1)
-	{
-		perror("Error\nNumber of exits must be 1");
-		return (0);
-	}
+		ft_error("Error\nNumber of exits must be 1\n");
 	else if (count_chars(map, 'C') < 1)
-	{
-		perror("Error\nNo collectibles");
-		return (0);
-	}
+		ft_error("Error\nNo collectibles\n");
 	return (1);
 }

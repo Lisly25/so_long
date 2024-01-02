@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 10:53:21 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:08:04 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 
+# define MAP_PATH "./map/map.ber"
 # define SCALE 150
 # define PLAYER_PATH "./textures/Cat_sitting.png"
 # define COLLECTIBLE_PATH "./textures/bird.png"
@@ -72,5 +73,9 @@ void		exit_game(t_data *assets);
 void		display_moves(t_data *assets, int move_count, char *text);
 
 void		delete_textures(mlx_texture_t *texture, ...);
+
+void		ft_mlx_error(void);
+
+void		ft_error(const char *str);
 
 #endif
