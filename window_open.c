@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2023/12/22 15:53:40 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/02 09:44:16 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void	load_assets(t_data *data)
 	mlx_texture_t	*ground;
 	mlx_texture_t	*bird;
 
-	cat_sitting = mlx_load_png("../textures/cat/Cat_sitting.png");
-	house = mlx_load_png("../textures/house/house.png");
-	tree = mlx_load_png("../textures/plants/tree.png");
-	ground = mlx_load_png("../textures/plants/backdrop.png");
-	bird = mlx_load_png("../textures/bird/bird.png");
+	cat_sitting = mlx_load_png(PLAYER_PATH);
+	house = mlx_load_png(EXIT_PATH);
+	tree = mlx_load_png(TREE_PATH);
+	ground = mlx_load_png(GROUND_PATH);
+	bird = mlx_load_png(COLLECTIBLE_PATH);
 	if (!cat_sitting || !house || !tree || !ground || !bird)
 		error();
 	data->player = mlx_texture_to_image(data->window, cat_sitting);
