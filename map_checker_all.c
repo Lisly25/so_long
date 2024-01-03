@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:38:43 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 15:44:07 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 10:24:18 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	check_map(t_vector *map)
 	if (is_rectangle(map->map) == 1)
 		return (1);
 	if (is_walled(map->map) == 1)
-		ft_error("Error\nMap must be surrounded by walls\n");
+		return (ft_error_message("Error\nMap must be surrounded by walls\n"));
 	if (check_path(map) == 1)
-		ft_error("Error\nNo valid path through map\n");
+		return (ft_error_message("Error\nNo valid path through map\n"));
 	return (0);
 }
 

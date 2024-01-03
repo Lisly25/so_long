@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:01:29 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 15:44:35 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 10:47:02 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	load_assets(t_data *data)
 	ground = mlx_load_png(GROUND_PATH);
 	bird = mlx_load_png(COLLECTIBLE_PATH);
 	if (!cat_sitting || !house || !tree || !ground || !bird)
-		ft_mlx_error();
+		ft_mlx_error(data);
 	data->player = mlx_texture_to_image(data->window, cat_sitting);
 	data->exit = mlx_texture_to_image(data->window, house);
 	data->tree = mlx_texture_to_image(data->window, tree);
@@ -34,7 +34,7 @@ static void	load_assets(t_data *data)
 	data->bird = mlx_texture_to_image(data->window, bird);
 	if (!data->player || !data->exit || !data->tree || !data->background \
 	|| !data->bird)
-		ft_mlx_error();
+		ft_mlx_error(data);
 	delete_textures(cat_sitting, house, tree, ground, bird);
 	return ;
 }
@@ -42,15 +42,15 @@ static void	load_assets(t_data *data)
 static void	resize_assets(t_data *assets, int scale)
 {
 	if (mlx_resize_image(assets->background, scale, scale) != true)
-		ft_mlx_error();
+		ft_mlx_error(assets);
 	if (mlx_resize_image(assets->exit, scale, scale) != true)
-		ft_mlx_error();
+		ft_mlx_error(assets);
 	if (mlx_resize_image(assets->tree, scale, scale) != true)
-		ft_mlx_error();
+		ft_mlx_error(assets);
 	if (mlx_resize_image(assets->bird, scale, scale) != true)
-		ft_mlx_error();
+		ft_mlx_error(assets);
 	if (mlx_resize_image(assets->player, scale, scale) != true)
-		ft_mlx_error();
+		ft_mlx_error(assets);
 }
 
 t_data	*init_window(char *map_path)
@@ -67,7 +67,7 @@ t_data	*init_window(char *map_path)
 	map_width = (ft_strlen(ptr_to_data->map->map[0]) - 1) * SCALE;
 	ptr_to_data->window = mlx_init(map_width, map_height, "so_long", true);
 	if (!ptr_to_data->window)
-		ft_mlx_error();
+		ft_mlx_error(ptr_to_data);
 	load_assets(ptr_to_data);
 	resize_assets(ptr_to_data, SCALE);
 	return (ptr_to_data);

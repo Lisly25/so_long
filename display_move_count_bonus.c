@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:57:26 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:22:30 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:27:04 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	display_moves_bonus(t_data *assets, int move_count, char *text)
 	full_display = ft_strjoin(text, moves);
 	mlx_delete_image(assets->window, assets->text);
 	assets->text = mlx_put_string(assets->window, full_display, 0, 0);
+	if (!assets->text)
+		ft_mlx_error(assets);
 	free(full_display);
 	free (moves);
 	return ;
@@ -29,5 +31,7 @@ void	display_moves_bonus(t_data *assets, int move_count, char *text)
 void	display_initial_moves_bonus(t_data *assets)
 {
 	assets->text = mlx_put_string(assets->window, "Number of moves: 0", 0, 0);
+	if (!assets->text)
+		ft_mlx_error(assets);
 	return ;
 }

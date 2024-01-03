@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:35:37 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:18:10 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:01:30 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			check_path(t_vector *map);
 
 t_data		*init_window(char *map_path);
 
-void		draw_map(t_vector *map, t_data *assets);
+void		draw_map(t_data *assets);
 
 void		ft_key_hook(mlx_key_data_t key_data, void *param);
 
@@ -73,8 +73,10 @@ void		display_moves(int move_count, char *text);
 
 void		delete_textures(mlx_texture_t *texture, ...);
 
-void		ft_mlx_error(void);
+void		ft_mlx_error(t_data *data);
 
 void		ft_error(const char *str);
+
+int			ft_error_message(const char *str);
 
 #endif

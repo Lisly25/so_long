@@ -6,13 +6,13 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:38:15 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 16:24:25 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:12:01 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
+static void	draw_background(t_data *data)
 {
 	size_t	i;
 	size_t	j;
@@ -21,12 +21,13 @@ static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
 	i = 0;
 	j = 0;
 	scale = SCALE;
-	while (map->map[i] != NULL)
+	while (data->map->map[i] != NULL)
 	{
-		while (map->map[i][j] != '\0' && map->map[i][j] != '\n')
+		while (data->map->map[i][j] != '\0' && data->map->map[i][j] != '\n')
 		{
-			if (mlx_image_to_window(mlx, asset, (j * scale), (i * scale)) < 0)
-				ft_mlx_error();
+			if (mlx_image_to_window(data->window, \
+			data->background, (j * scale), (i * scale)) < 0)
+				ft_mlx_error(data);
 			j++;
 		}
 		j = 0;
@@ -35,23 +36,24 @@ static void	draw_background(t_vector *map, mlx_image_t *asset, mlx_t *mlx)
 	return ;
 }
 
-static void	draw_asset(t_vector *map, mlx_image_t *asset, mlx_t *mlx, char c)
+static void	draw_asset(t_data *data, mlx_image_t *asset, char c)
 {
 	size_t	i;
 	size_t	j;
-	int		scale;
+	int		size;
 
 	i = 0;
 	j = 0;
-	scale = SCALE;
-	while (map->map[i] != NULL)
+	size = SCALE;
+	while (data->map->map[i] != NULL)
 	{
-		while (map->map[i][j] != '\0')
+		while (data->map->map[i][j] != '\0')
 		{
-			if (map->map[i][j] == c)
+			if (data->map->map[i][j] == c)
 			{
-				if (mlx_image_to_window(mlx, asset, j * scale, i * scale) < 0)
-					ft_mlx_error();
+				if (mlx_image_to_window(\
+				data->window, asset, j * size, i * size) < 0)
+					ft_mlx_error(data);
 			}
 			j++;
 		}
@@ -61,13 +63,13 @@ static void	draw_asset(t_vector *map, mlx_image_t *asset, mlx_t *mlx, char c)
 	return ;
 }
 
-void	draw_map(t_vector *map, t_data *assets)
+void	draw_map(t_data *assets)
 {
-	draw_background(map, assets->background, assets->window);
-	draw_asset(map, assets->tree, assets->window, '1');
-	draw_asset(map, assets->exit, assets->window, 'E');
-	draw_asset(map, assets->bird, assets->window, 'C');
-	draw_asset(map, assets->player, assets->window, 'P');
+	draw_background(assets);
+	draw_asset(assets, assets->tree, '1');
+	draw_asset(assets, assets->exit, 'E');
+	draw_asset(assets, assets->bird, 'C');
+	draw_asset(assets, assets->player, 'P');
 	ft_printf("Number of moves: 0\n");
 	return ;
 }

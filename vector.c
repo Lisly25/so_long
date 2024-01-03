@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:23 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/02 12:17:41 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/03 10:36:30 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ int	vector_add_back(t_vector *old, char *new_data)
 	if (old->used_nodes == old->max_nodes)
 	{
 		if (expand_vector(old) == 1)
+		{
+			free_map(old);
+			free(new_data);
 			ft_error("Error\nMap read failure (while expanding vector\n)");
+		}
 	}
 	old->map[old->used_nodes] = new_data;
 	old->used_nodes++;
