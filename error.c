@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 12:00:56 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/03 10:53:37 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/04 13:52:13 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_mlx_error(t_data *data)
 {
 	ft_printf("\nError");
-	puts(mlx_strerror(mlx_errno));
 	free_map(data->map);
 	mlx_close_window(data->window);
 	mlx_terminate(data->window);
