@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:16:14 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/03 10:28:33 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:20:13 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int	check_char_num(char **map)
 		return (ft_error_message("Error\nNumber of exits must be 1\n"));
 	else if (count_chars(map, 'C') < 1)
 		return (ft_error_message("Error\nNo collectibles\n"));
-	return (1);
+	return (0);
 }

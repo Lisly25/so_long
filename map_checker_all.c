@@ -6,7 +6,7 @@
 /*   By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:38:43 by skorbai           #+#    #+#             */
-/*   Updated: 2024/01/03 10:24:18 by skorbai          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:18:38 by skorbai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_map(t_vector *map)
 {
-	if (check_char_num(map->map) == 0)
+	if (check_char_num(map->map) == 1)
 		return (1);
 	if (check_chars(map->map) == 1)
 		return (1);
