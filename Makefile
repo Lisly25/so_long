@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2024/01/02 16:48:21 by skorbai          ###   ########.fr        #
+#    Updated: 2024/01/05 15:54:11 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,12 +74,12 @@ bonus: .bonus
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -rf MLX42/build
 	@rm -f .bonus
-	make clean -C ./libft
+	make fclean -C ./libft
 
 fclean: clean 
 	rm -f $(NAME)
-	make fclean -C ./libft
 
 re: fclean all
 
