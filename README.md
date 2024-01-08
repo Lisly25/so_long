@@ -3,8 +3,11 @@ This is a simple 2D game that was made for Hive Helsinki's so_long project. It i
 The images used for the graphics are not my own, so I'd also like to thank the following artists for sharing their work for free on itch.io:
 
 LuizMelo for the cat assets - https://luizmelo.itch.io/pet-cat-pack
+
 Ma9ici4n for the bird - https://ma9ici4n.itch.io/pixel-art-bird-16x16
+
 PXLer Game for the house - https://pxlergame.itch.io/pico8house
+
 FrozenTaurus for the tree and grass assets - https://frozentaurus.itch.io/frozentauruss-grass-tile-set
 
 ***INSTALLATION***
