@@ -6,7 +6,7 @@
 #    By: skorbai <skorbai@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:59:07 by skorbai           #+#    #+#              #
-#    Updated: 2024/01/05 15:54:11 by skorbai          ###   ########.fr        #
+#    Updated: 2024/01/08 09:45:31 by skorbai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
+GLFW_DIR = /Users/skorbai/.brew/Cellar/glfw/3.3.8/lib
+
 MLX = MLX42/build/libmlx42.a
 
 MLX_HEADER = MLX42/include/MLX42/MLX42.h
@@ -61,12 +63,12 @@ $(MLX) :
 	cd MLX42 &&	cmake -B build && cmake --build build -j4
 
 $(NAME) : $(OBJS) $(MLX) $(LIBFT)
-	cc $(OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I $(MLX_HEADER) -o $(NAME)
+	cc $(OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L$(GLFW_DIR) -lglfw -I $(MLX_HEADER) -o $(NAME)
 
 bonus: .bonus
 
 .bonus : $(BONUS_OBJS) $(MLX) $(LIBFT)
-	cc $(BONUS_OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L/Users/skorbai/.brew/Cellar/glfw/3.3.8/lib -lglfw -I $(MLX_HEADER) -o $(NAME)
+	cc $(BONUS_OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L$(GLFW_DIR) -lglfw -I $(MLX_HEADER) -o $(NAME)
 	@touch .bonus
 
 %.o: %.c 
