@@ -43,11 +43,11 @@ This game was made to be able to generate a playable map based on a text file en
 
 An example of a valid map:
 
-1111111111111
-10010000000C1
-1000011111001
-1P0011E000001
-1111111111111
+1111111111111  
+10010000000C1  
+1000011111001  
+1P0011E000001  
+1111111111111 
 
 Note: This is a simple game, and my first graphics project, so there's a few limitations as to the size of map that can be properly displayed. All the grids in the map are drawn as a specific size, so large maps might not "fit" onto your screen, might not be fully visible. The grid size the program's using is specified as a macro in the file so_long.h as SCALE. Thus, to modify the "resolution", change this macro to a number of your choice, and then run the "make" command again for the change to take effect.
 
